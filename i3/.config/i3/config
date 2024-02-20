@@ -1,0 +1,554 @@
+##############################################
+#	_________ ______            _______		 #
+#	\__   __// ___  \ |\     /|(       )	 #
+#		) (   \/   \  \| )   ( || () () |	 #
+#		| |      ___) /| | _ | || || || |	 #
+#		| |     (___ ( | |( )| || |(_)| |	 #
+#		| |         ) \| || || || |   | |	 #
+#	___	) (___/\___/  /| () () || )   ( |	 #
+#	\_______/\______/ (_______)|/     \|	 #
+#											 #
+#			  Config by SardiOps			 #
+#											 #
+##############################################
+
+# KEY DEFINITIONS TO REMEMBER
+
+# $Mod = WINDOWS key or Super key or Mod4
+# Mod1 = ALT key
+# Control = CTRL key
+# Shift = SHIFT key
+# Escape = ESCAPE key
+# Return = ENTER or RETURN key
+# KP_Enter = Keypad Enter
+# Pause = PAUSE key
+# Print = PRINT key
+# Tab = TAB key
+
+####################################################################################################################
+
+# DEFINE KEYS
+
+# $mod variable/key for Super
+set $mod Mod4
+
+# Movement Keys
+set $up k
+set $down j
+set $left h
+set $right l
+
+####################################################################################################################
+
+# DUAL MONITOR CONFIG
+
+# First Monitor (Vertical)
+exec --no-startup-id xrandr --output DP-3 --primary
+set $firstMonitor DP-3
+
+# Second Monitor (Horizontal)
+exec --no-startup-id xrandr --output HDMI-0 --left-of DP-3 --rotate left
+set $secondMonitor HDMI-0
+
+# Workspaces for Monitor 1
+workspace 1 output $firstMonitor
+workspace 2 output $firstMonitor
+workspace 3 output $firstMonitor
+workspace 4 output $firstMonitor
+workspace 5 output $firstMonitor
+workspace 6 output $firstMonitor
+workspace 7 output $firstMonitor
+workspace 8 output $firstMonitor
+workspace 9 output $firstMonitor
+workspace 10 output $firstMonitor
+workspace 11 output $firstMonitor
+workspace 12 output $firstMonitor
+workspace 13 output $firstMonitor
+workspace 14 output $firstMonitor
+
+# Workspaces for Monitor 2
+workspace 15 output $secondMonitor
+workspace 16 output $secondMonitor
+workspace 17 output $secondMonitor
+workspace 18 output $secondMonitor
+workspace 19 output $secondMonitor
+workspace 20 output $secondMonitor
+
+# Bindings for switching workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+Ctrl+1 workspace 11
+bindsym $mod+Ctrl+2 workspace 12
+bindsym $mod+Ctrl+3 workspace 13
+bindsym $mod+Ctrl+4 workspace 14
+bindsym $mod+Ctrl+5 workspace 15
+bindsym $mod+Ctrl+6 workspace 16
+bindsym $mod+Ctrl+7 workspace 17
+bindsym $mod+Ctrl+8 workspace 18
+bindsym $mod+Ctrl+9 workspace 19
+bindsym $mod+Ctrl+0 workspace 20
+
+# Bindings for moving focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1; workspace 1
+bindsym $mod+Shift+2 move container to workspace 2; workspace 2
+bindsym $mod+Shift+3 move container to workspace 3; workspace 3
+bindsym $mod+Shift+4 move container to workspace 4; workspace 4
+bindsym $mod+Shift+5 move container to workspace 5; workspace 5
+bindsym $mod+Shift+6 move container to workspace 6; workspace 6
+bindsym $mod+Shift+7 move container to workspace 7; workspace 7
+bindsym $mod+Shift+8 move container to workspace 8; workspace 8
+bindsym $mod+Shift+9 move container to workspace 9; workspace 9
+bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+bindsym $mod+Shift+Ctrl+1 move container to workspace 11; workspace 11
+bindsym $mod+Shift+Ctrl+2 move container to workspace 12; workspace 12
+bindsym $mod+Shift+Ctrl+3 move container to workspace 13; workspace 13
+bindsym $mod+Shift+Ctrl+4 move container to workspace 14; workspace 14
+bindsym $mod+Shift+Ctrl+5 move container to workspace 15; workspace 15
+bindsym $mod+Shift+Ctrl+6 move container to workspace 16; workspace 16
+bindsym $mod+Shift+Ctrl+7 move container to workspace 17; workspace 17
+bindsym $mod+Shift+Ctrl+8 move container to workspace 18; workspace 18
+bindsym $mod+Shift+Ctrl+9 move container to workspace 19; workspace 19
+bindsym $mod+Shift+Ctrl+0 move container to workspace 20; workspace 20
+
+####################################################################################################################
+
+# MAIN KEY BINDINGS
+
+# Startup Script
+bindsym $mod+shift+Ctrl+r exec --no-startup-id bash ~/Scripts/i3-startup.sh
+
+#################
+# Rofi Bindings #
+#################
+
+# Rofi AppLauncher
+bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/text/launcher.sh
+
+# Rofi Window Selector
+bindsym $mod+mod1+1 exec --no-startup-id rofi -show window
+
+# Rofi Calculator
+bindsym $mod+mod1+2 exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -font "Noto Sans 13"
+
+# Rofi Clipboard
+bindsym $mod+mod1+3 exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
+
+# Rofi Scripts Launcher
+bindsym $mod+mod1+4 exec bash ~/Programs/Rofi/rofi-sh-launcher.sh
+
+# Rofi-Bluetooth
+bindsym $mod+mod1+5 exec --no-startup-id rofi-bluetooth
+
+# Rofi-games
+bindsym $mod+mod1+6 exec rofi -modi games -show games -theme games-default
+
+#################
+# Main Programs #
+#################
+
+# Brave
+bindsym $mod+w exec --no-startup-id brave
+
+# VS Code
+bindsym $mod+mod1+c exec --no-startup-id code
+
+# Obsidian
+bindsym $mod+mod1+o exec --no-startup-id /home/octavio/Programs/Obsidian-1.1.9.AppImage
+
+# Nemo
+bindsym $mod+mod1+e exec --no-startup-id nemo 
+
+# Discord/Webcord
+bindsym $mod+mod1+d exec --no-startup-id webcord
+
+# Steam
+bindsym $mod+mod1+s exec --no-startup-id steam
+
+# Flameshot
+bindsym $mod+mod1+p exec --no-startup-id flameshot gui
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id kitty; focus
+bindsym $mod+Shift+Return exec --no-startup-id xfce4-terminal --drop-down; focus
+
+# General Settings
+bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
+
+#################
+#   Functions   #
+#################
+
+# Change Audio Output between Monitor and Headphones
+bindsym $mod+mod1+equal exec --no-startup-id bash ~/Scripts/change-audio-source.sh
+
+# Volume Controls
+bindsym $mod+minus exec --no-startup-id amixer -D pulse sset Master 5%-
+bindsym $mod+equal exec --no-startup-id amixer -D pulse sset Master 5%+
+bindsym $mod+shift+minus exec --no-startup-id amixer -D pulse set Master 1+ toggle
+
+# MPV Track Controls
+bindsym $mod+bracketleft exec --no-startup-id ~/.config/polybar/scripts/player-mpris-tail.py previous &
+bindsym $mod+bracketright exec --no-startup-id ~/.config/polybar/scripts/player-mpris-tail.py next &
+bindsym $mod+backslash exec --no-startup-id ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
+
+# Powermenu
+bindsym $mod+x exec --no-startup-id ~/.config/rofi/powermenu/powermenu.sh
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Kill focused window
+bindsym $mod+q kill
+
+#######################
+# Moving around in i3 #
+#######################
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# Change Focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Next/previous workspace
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# Switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# Move workspace to the other Monitor
+bindsym $mod+Ctrl+m move workspace to output next
+
+#####################
+# Tiling parameters #
+#####################
+
+# Orientation for new workspaces
+default_orientation horizontal
+
+# Split in horizontal orientation
+bindsym $mod+Mod1+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+Mod1+Ctrl+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+shift+space focus mode_toggle
+
+############
+# Resizing #
+############
+
+# Resizing by 1
+bindsym $mod+Ctrl+$right resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+$up resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+$down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+$left resize grow width 1 px or 1 ppt
+
+####################################################################################################################
+
+# GENERAL CONFIGURATIONS
+
+# Font
+font pango:JetBrains Mono Regular 13
+
+# Audio Settings
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+
+# Border Control
+new_window normal
+new_float normal
+
+# Popups during fullscreen mode
+popup_during_fullscreen smart
+
+# i3-gaps
+for_window [class="^.*"] border pixel 2
+gaps inner 8
+gaps outer 0
+hide_edge_borders smart
+# smart_gaps on
+
+# i3-gaps change
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 8
+        bindsym minus gaps outer current minus 8
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Compositor (for fade effect)
+exec_always --no-startup-id picom -b -f
+
+# Toggle Picom
+bindsym $mod+Shift+Crtl+r exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
+
+# Theming
+# Window color settings
+# class                 border    backgr.   text      indicator
+client.focused          #d6b785   #d6b785   #d6b785   #eea93e
+client.unfocused        #222222   #222222   #222222   #222222
+client.focused_inactive #222222   #222222   #222222   #222222
+client.placeholder      #222222   #222222   #222222   #222222
+client.urgent           #e34531   #e34531   #e34531   #e34531
+client.background       #222222
+
+#############################
+# Assign apps to workspaces #
+#############################
+
+# Workspace 1
+#assign [class=""]															          → 1
+
+# Workspace 2
+#assign [class=""]																	  → 2
+
+# Workspace 3
+assign [class="Nemo"]															 	 → 3
+
+# Workspace 4
+assign [class="Code - OSS|Nvim|Neovim"]                                              → 4
+
+# Workspace 5
+assign [class="mpv|Vlc|vlc|nomacs|Xviewer|Nitrogen"]								 → 5
+
+# Workspace 6
+assign [class="Inkscape|Gimp"]                                                       → 6
+
+# Workspace 7																		 
+assign [class="r2modman"]															 → 7
+
+# Workspace 8																		 
+assign [class="Foliate"]															 → 8
+
+# Workspace 9																		 
+assign [class="*- Obsidian .*"]													    → 9
+
+# Workspace 13																		 
+assign [class="KeePassXC"]															→ 13
+
+# Workspace 14
+assign [class="Anki|anki"]															→ 14
+
+# Workspace 15
+assign [class="Okular|okular"]														→ 15
+
+# Workspace 19 
+assign [class="Steam|steam"]														→ 19
+for_window [class="Steam"] move to workspace 19
+
+# Workspace 20
+assign [class="WebCord|webcord|Discord|discord"]                                    → 20
+for_window [class="Webcord"] move to workspace 20
+
+#############
+# Autostart #
+#############
+
+# USER APPLICATIONS TO START AT BOOT
+
+# Autotiling
+exec_always --no-startup-id autotiling
+
+# Nitrogen
+exec --no-startup-id nitrogen --restore
+
+# Morgen
+exec --no-startup-id ~/Applications/Morgen.AppImage
+
+# Todoist
+exec --no-startup-id ~/Applications/Todoist.AppImage
+
+# ZapZap
+exec --no-startup-id flatpak run com.rtosta.zapzap
+
+# Pomotroid
+exec --no-startup-id ~/Applications/Pomotroid.AppImage --disable-gpu-sandbox
+
+# KeePassXC
+exec --no-startup-id keepassxc
+
+# Espanso
+exec --no-startup-id espanso stop && espanso start
+
+# Autodoist
+exec --no-startup-id python ~/Programs/autodoist/autodoist.py -a 702e2a98cc739b720a17ba3a5b9a31d7d0c71c6a -l next_action
+
+# Syncthing
+exec --no-startup-id systemctl --user start syncthing.service
+
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
+# Greenclip Daemon
+exec_always --no-startup-id greenclip daemon
+
+# i3 Restore
+exec --no-startup-id bash ~/Scripts/i3-startup.sh
+
+# Ranger
+exec --no-startup-id kitty -T=Ranger -e ranger /run/media/octavio
+
+# Htop
+exec --no-startup-id kitty -T=Htop -e htop
+
+# Dropbox
+exec --no-startup-id dropbox
+
+# GreenWithEnvy
+exec --no-startup-id gwe --hide-window
+
+##########################
+# Other Startup Routines #
+##########################
+
+exec_always --no-startup-id killall nm-applet pamac-tray volumeicon
+exec --no-startup-id kdeconnect-cli -l &
+exec --no-startup-id kill xfce4-notifyd && dunst &
+
+####################################################################################################################
+
+############################################
+# Floating Enable/Diable for Specific Apps #
+############################################
+
+# Floating enabled from some programs - find with xprop
+
+for_window [class="Bleachbit"] floating disable
+for_window [class="Blueberry.py"] floating enable
+for_window [class="flameshot"] floating enable 
+for_window [class="Gnome-disks"] floating disable
+for_window [class="^Gnome-font-viewer$"] floating enable
+for_window [class="^Gpick$"] floating enable
+for_window [class="Nitrogen"] floating disable
+for_window [class="CrossCode"] fullscreen enable
+for_window [class="Pavucontrol"] floating disable
+for_window [class="System-config-printer.py"] floating enable
+for_window [class="Unetbootin.elf"] floating enable
+for_window [class="^Vlc$"] floating disable
+for_window [class="Wine"] floating disable
+for_window [class="Xfburn"] floating disable
+for_window [class="Xfce4-settings-manager"] floating disable
+for_window [class="Xfce4-taskmanager"] floating enable
+for_window [class="feh"] floating enable
+
+#for_window [instance="gimp"] floating disable
+for_window [instance="script-fu"] border normal
+for_window [instance="variety"] floating disable
+
+for_window [title="Copying"] floating enable
+for_window [title="Deleting"] floating enable
+for_window [title="Moving"] floating enable
+
+#for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="setup"] floating enable
+
+####################################################################################################################
+
+# SCRATCHPADS
+
+# Ranger FM
+for_window [ title="Ranger" ] floating enable, resize set 900 600,  move position center, move scratchpad
+bindsym $mod+r exec --no-startup-id i3-msg [ title="Ranger" ] scratchpad show &
+
+# Htop (Process Management)
+for_window [ title="Htop" ] floating enable, resize set 1500 900,  move position center, move scratchpad
+bindsym $mod+a exec --no-startup-id i3-msg [ title="Htop" ] scratchpad show &
+
+# Pomotroid
+for_window [ title="Pomotroid" ] floating enable, move position center, move scratchpad
+bindsym $mod+p exec --no-startup-id i3-msg [ title="Pomotroid" ] scratchpad show &
+
+# Whatsapp Client
+for_window [ title="ZapZap" ] floating enable, resize set 1500 900,  move position center, move scratchpad
+bindsym $mod+z exec --no-startup-id i3-msg [ title="ZapZap" ] scratchpad show &
+
+# Morgen (Calendar)
+for_window [ title="Morgen" ] floating enable, resize set 1500 900, move position center, move scratchpad
+bindsym $mod+m exec --no-startup-id i3-msg [ title="Morgen" ] scratchpad show &
+
+# Todoist (Tasks)
+for_window [ title="Todoist" ] floating enable, resize set 1500 900, move position center, move scratchpad
+bindsym $mod+t exec --no-startup-id i3-msg [ title="Todoist" ] scratchpad show &
+
+# Hide Scratchpad
+bindsym $mod+s move scratchpad
+
+# Show Scratchpads
+bindsym $mod+ctrl+s scratchpad show
