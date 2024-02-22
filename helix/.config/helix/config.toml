@@ -1,0 +1,77 @@
+theme = "riovhen"
+
+[editor]
+line-number = "relative"
+mouse = true
+auto-pairs = true
+color-modes = true
+cursorline = true
+true-color = true
+scrolloff = 10
+bufferline = "multiple"
+
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = ["mode", "spinner", "file-name", "file-type", "total-line-numbers", "file-encoding"]
+center = []
+right = ["selections", "primary-selection-length", "position", "position-percentage", "spacer", "diagnostics", "workspace-diagnostics", "version-control"]
+separator = "|"
+
+[editor.indent-guides]
+render = true
+character = "┆" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.lsp]
+# Disable automatically popups of signature parameter help
+# auto-signature-help = false
+# Show LSP messages in the status line
+display-messages = true
+display-inlay-hints = true
+
+[editor.soft-wrap]
+enable = true
+# wrap-at-text-width = true
+wrap-indicator = "↩ "
+
+### https://docs.helix-editor.com/master/configuration.html#editorwhitespace-section
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = " "
+nbsp = "⍽"    # Non Breaking Space
+tab = "→"
+newline = "⏎"
+tabpad = "·"  # Tabs will look like "→···" (depending on tab width)
+
+[keys.normal]
+# Use system clipboard
+y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_before"
+C-o = ":open ~/.config/helix/config.toml" # Maps Ctrl-o to opening of the helix config file
+C-r = ":config-reload"
+space.c = "toggle_comments"
+g = { a = "code_action" } # ga to open code actions
+X = "extend_line_above" # Shift+x to select the whole line above
+# L = [ "extend_to_line_end", "change_selection"] # Wipe and edit the current line from cursor position
+D = [ "extend_to_line_bounds", "change_selection", "delete_char_backward", "normal_mode", "goto_line_start"]
+H = [ "extend_to_line_start" ]
+L = [ "extend_to_line_end" ]
+space.x = ":toggle whitespace.render all none"
+C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+space."." = "file_picker_in_current_buffer_directory"
