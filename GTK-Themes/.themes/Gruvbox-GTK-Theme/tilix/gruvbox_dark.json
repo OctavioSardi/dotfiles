@@ -1,11 +1,11 @@
 {
-    "background-color": "#202020",
+    "background-color": "#222222",
     "badge-color": "#AC7EA8",
     "bold-color": "#FFFFFF",
     "comment": "",
     "cursor-background-color": "#000000",
     "cursor-foreground-color": "#FFFFFF",
-    "foreground-color": "#DDC7A1",
+    "foreground-color": "#D6B875",
     "highlight-background-color": "#000000",
     "highlight-foreground-color": "#FFFFFF",
     "name": "gruvbox_dark",

@@ -137,3 +137,23 @@ indent = { tab-width = 4, unit = "\t" }
 [[grammar]]
 name = "gowork"
 source = { git = "https://github.com/omertuc/tree-sitter-go-work", rev = "6dd9dd79fb51e9f2abc829d5e97b15015b6a8ae2" }
+
+# https://docs.helix-editor.com/languages.html
+
+[[language]]
+name = "ini"
+file-types = [
+  "conf", "config",
+
+  # from https://github.com/helix-editor/helix/blob/master/languages.toml
+  "ini", "service", "automount", "device", "mount", "path", "service", "slice", "socket", "swap", "target", "timer", "container", "volume", "kube", "network",
+]
+
+[[language]]
+name = "bash"
+file-types = [
+  "nginx.conf",
+
+  # from https://github.com/helix-editor/helix/blob/master/languages.toml
+  "sh", "bash", "zsh", ".bash_login", ".bash_logout", ".bash_profile", ".bashrc", ".profile", ".zshenv", "zshenv", ".zlogin", "zlogin", ".zlogout", "zlogout", ".zprofile", "zprofile", ".zshrc", "zshrc", ".zimrc", "APKBUILD", "PKGBUILD", "eclass", "ebuild", "bazelrc", ".bash_aliases", "Renviron", ".Renviron",
+]
