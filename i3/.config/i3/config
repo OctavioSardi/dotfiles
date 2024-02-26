@@ -399,7 +399,7 @@ assign [class="Foliate"]															 → 8
 assign [class="*- Obsidian .*"]													    → 9
 
 # Workspace 13																		 
-assign [class="KeePassXC"]															→ 13
+# assign [class="KeePassXC"]															→ 13
 
 # Workspace 14
 assign [class="Anki|anki"]															→ 14
@@ -428,10 +428,10 @@ exec_always --no-startup-id autotiling
 exec --no-startup-id nitrogen --restore
 
 # Morgen
-exec --no-startup-id ~/Applications/Morgen.AppImage
+exec --no-startup-id morgen
 
 # Todoist
-exec --no-startup-id ~/Applications/Todoist.AppImage
+exec --no-startup-id flatpak run com.todoist.Todoist
 
 # ZapZap
 exec --no-startup-id flatpak run com.rtosta.zapzap
@@ -524,28 +524,32 @@ for_window [window_role="setup"] floating enable
 # SCRATCHPADS
 
 # Ranger FM
-for_window [ title="Ranger" ] floating enable, resize set 900 600,  move position center, move scratchpad
+for_window [ title="Ranger" ] floating enable, resize set 1200 700,  move position center, move scratchpad
 bindsym $mod+r exec --no-startup-id i3-msg [ title="Ranger" ] scratchpad show &
 
 # Htop (Process Management)
-for_window [ title="Htop" ] floating enable, resize set 1500 900,  move position center, move scratchpad
+for_window [ title="Htop" ] floating enable, resize set 1200 700,  move position center, move scratchpad
 bindsym $mod+a exec --no-startup-id i3-msg [ title="Htop" ] scratchpad show &
 
 # Pomotroid
 for_window [ title="Pomotroid" ] floating enable, move position center, move scratchpad
-bindsym $mod+p exec --no-startup-id i3-msg [ title="Pomotroid" ] scratchpad show &
+bindsym $mod+c exec --no-startup-id i3-msg [ title="Pomotroid" ] scratchpad show &
 
 # Whatsapp Client
-for_window [ title="ZapZap" ] floating enable, resize set 1500 900,  move position center, move scratchpad
+for_window [ title="ZapZap" ] floating enable, resize set 1200 700,  move position center, move scratchpad
 bindsym $mod+z exec --no-startup-id i3-msg [ title="ZapZap" ] scratchpad show &
 
 # Morgen (Calendar)
-for_window [ title="Morgen" ] floating enable, resize set 1500 900, move position center, move scratchpad
+for_window [ title="Morgen" ] floating enable, resize set 1200 700, move position center, move scratchpad
 bindsym $mod+m exec --no-startup-id i3-msg [ title="Morgen" ] scratchpad show &
 
 # Todoist (Tasks)
-for_window [ title="Todoist" ] floating enable, resize set 1500 900, move position center, move scratchpad
+for_window [ title="Todoist" ] floating enable, resize set 1200 700, move position center, move scratchpad
 bindsym $mod+t exec --no-startup-id i3-msg [ title="Todoist" ] scratchpad show &
+
+# KeepassXD (Password Manager)
+for_window [instance="keepassxc"] floating enable, resize set 1200 700, move scratchpad
+bindsym $mod+p [instance="keepassxc"] scratchpad show, move position center
 
 # Hide Scratchpad
 bindsym $mod+s move scratchpad

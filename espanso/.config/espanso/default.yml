@@ -92,7 +92,3 @@ matches:
     vars:
       - name: "clipboard"
         type: "clipboard"
-  
-  # Mochi Card Form
-  - trigger: ";t"
-    replace: "### **Tags and Links:**\n- *Tags:* $|$\n*Obsidian:* \n\n---"
