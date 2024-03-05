@@ -1,7 +1,7 @@
 ##############################################
-#	_________ ______            _______		 #
-#	\__   __// ___  \ |\     /|(       )	 #
-#		) (   \/   \  \| )   ( || () () |	 #
+#	_________ ______            _______		     #
+#	\__   __// ___  \ |\     /|(       )	     #
+#		) (   \/   \  \| )   ( || () () |     	 #
 #		| |      ___) /| | _ | || || || |	 #
 #		| |     (___ ( | |( )| || |(_)| |	 #
 #		| |         ) \| || || || |   | |	 #
@@ -405,7 +405,7 @@ assign [class="*- Obsidian .*"]													    → 9
 assign [class="Anki|anki"]															→ 14
 
 # Workspace 15
-assign [class="Okular|okular"]														→ 15
+assign [class="Zathura|zathura|Okular|okular"]														→ 15
 
 # Workspace 19 
 assign [class="Steam|steam"]														→ 19
