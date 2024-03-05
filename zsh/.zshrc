@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='$EDITOR'
+  export EDITOR='nvim'
 fi
 
 # Other Environment Variables
@@ -299,17 +299,17 @@ alias probe="sudo -E hw-probe -all -upload"
 # My own aliases
 
 ## Vim Configs
-alias v="helix"
-alias vz="helix ~/.zshrc"
-alias vvim="helix ~/.config/nvim/init.vim"
-alias vi3="helix ~/.config/i3/config"
-alias vkitty="helix ~/.config/kitty/kitty.conf"
-alias vnvim="helix ~/.config/nvim/init.vim"
-alias vh="helix ~/.config/helix/config.toml"
-alias vhl="helix ~/.config/helix/languages.toml"
-alias vpoly="helix ~/.config/polybar/config.ini"
-alias vpolycolors="helix ~/.config/polybar/colors.ini"
-alias vpolymodules="helix ~/.config/polybar/modules.ini"
+alias v="nvim"
+alias vz="nvim ~/.zshrc"
+alias vvim="nvim ~/.config/nvim/init.vim"
+alias vi3="nvim ~/.config/i3/config"
+alias vkitty="nvim ~/.config/kitty/kitty.conf"
+alias vnvim="nvim ~/.config/nvim/init.vim"
+alias vh="nvim ~/.config/nvim/config.toml"
+alias vhl="nvim ~/.config/nvim/languages.toml"
+alias vpoly="nvim ~/.config/polybar/config.ini"
+alias vpolycolors="nvim ~/.config/polybar/colors.ini"
+alias vpolymodules="nvim ~/.config/polybar/modules.ini"
 
 ## Pacman
 alias del="sudo pacman -R"
@@ -332,7 +332,6 @@ alias tssh="tmux-cssh"
 alias cat="bat"
 alias sz="source ~/.zshrc"
 alias hx="helix"
-alias nv="nvim"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
