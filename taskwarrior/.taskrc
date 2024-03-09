@@ -3,6 +3,8 @@
 # Files
 data.location=/home/octavio/.config/task/tasks
 
+nag=
+
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
 
@@ -34,16 +36,11 @@ urgency.uda.brainpower.L.coefficient=1.5
 
 ## Contexts
 context.next_action.read=+next
-context.next_action.write=+next
 context.wishlist.read=+wishlist or +maybe
 context.work.read=+@computer or +@online or +@obsidian
-context.work.write=+@computer or +@online or +@obsidian
 context.study.read=+@computer or +flashcards or +study or +@kindle and -fiction
-context.study.write=+@computer or +flashcards or +study or +@kindle and -fiction
 context.readlist.read=+book
-context.readlist.write=+book
 context.buylist.read=+buy
-context.buylist.write=+buy
 
 ## UDAs
 ### Brainpower (how "thought and attention" demanding a task is)
@@ -86,4 +83,4 @@ taskd.credentials=WingTask\/octavio.sardi@proton.me\/6b6c6c34-6a2c-4c80-a3af-995
 context.tasks.read=-wishlist
 context.inbox.read=+in
 context.inbox.write=+in
-context=tasks
+news.version=2.6.0
