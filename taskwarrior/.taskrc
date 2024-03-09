@@ -1,0 +1,89 @@
+# TaskWarrior config by SardiOps
+
+# Files
+data.location=/home/octavio/.config/task/tasks
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
+
+# Urgency
+urgency.user.tag.next.coefficient=15.0
+
+urgency.uda.brainpower.H.coefficient=6.0
+urgency.uda.brainpower.M.coefficient=3.0
+urgency.uda.brainpower.L.coefficient=1.5
+
+## Contexts
+context.next_action.read=+next
+context.next_action.write=+next
+context.wishlist.read=+wishlist or +maybe
+context.work.read=+@computer or +@online or +@obsidian
+context.work.write=+@computer or +@online or +@obsidian
+context.study.read=+@computer or +flashcards or +study or +@kindle and -fiction
+context.study.write=+@computer or +flashcards or +study or +@kindle and -fiction
+context.readlist.read=+book
+context.readlist.write=+book
+context.buylist.read=+buy
+context.buylist.write=+buy
+
+## UDAs
+### Brainpower (how "thought and attention" demanding a task is)
+uda.brainpower.type=string
+uda.brainpower.label=Brainpower
+uda.brainpower.values=H,M,L
+uda.brainpower.default=M
+uda.brainpower.label=brain
+
+### Time Estimation
+uda.estimate.type=numeric
+uda.estimate.label=Estimate
+uda.estimate.label=est
+
+## Custom Inbox Report
+report.in.columns           = id,description
+report.in.description       = Inbox
+report.in.filter            = status:pending limit:page (+in)
+report.in.labels            = ID,Description
+
+## Custom Wishlist Report
+report.wishlist.columns           = id,description
+report.wishlist.description       = Wishlist
+report.wishlist.filter            = status:pending limit:page (+wishlist)
+report.wishlist.labels            = ID,Description
+
+## Custom Next Report
+report.next.description     = Next Actions
+report.next.columns         = id,start.age,entry.age,urgency,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,estimate,brainpower,description
+report.next.filter          = status:pending
+report.next.labels          = ID,Active,Age,Urgency,Deps,P,Project,Tag,Recur,S,Due,Until,Estimated Time,Brainpower,Description
+report.next.sort            = urgency-,brainpower-,priority-,estimate-
+
+## WingTask Server
+taskd.server=app.wingtask.com:53589
+taskd.key=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.key.pem
+taskd.ca=\/home\/octavio\/.wingtask_certs\/letsencrypt_root_cert.pem
+taskd.certificate=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.cert.pem
+taskd.credentials=WingTask\/octavio.sardi@proton.me\/6b6c6c34-6a2c-4c80-a3af-995f57258088
+context.tasks.read=-wishlist
+context.inbox.read=+in
+context.inbox.write=+in
+context=tasks

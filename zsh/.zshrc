@@ -83,11 +83,11 @@ plugins=(
 	copypath
 	docker
 	fastfile
-    git
+  git
 	tmux-cssh
 	vi-mode
 	wd
-    zsh-autosuggestions
+  zsh-autosuggestions
 	zsh-fzf-history-search
 )
 
@@ -142,7 +142,7 @@ fi
 #list
 alias ls='eza --group-directories-first --header --icons'
 alias la='eza --group-directories-first --header --icons -A'
-alias ll='eza --group-directories-first --header --long -A --icons --git'
+alias ll='eza --group-directories-first --header --long -A --icons'
 alias l='eza --group-directories-first --header --icons'
 alias lt='eza --group-directories-first --header --icons --tree --level=2'
 alias l.="eza --group-directories-first --header --icons -A | egrep '^\.'"
@@ -213,9 +213,6 @@ alias cz='sudo cp /etc/skel/.zshrc ~/.zshrc && source ~/.zshrc'
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
 
-#quickly kill conkies
-alias kc='killall conky'
-
 #hardware info --short
 alias hw="hwinfo --short"
 
@@ -234,24 +231,6 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 
 #mounting the folder Public for exchange between host and guest on virtualbox
 alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
-
-#shopt
-#shopt -s autocd # change to named directory
-#shopt -s cdspell # autocorrects cd misspellings
-#shopt -s cmdhist # save multi-line commands in history as single line
-#shopt -s dotglob
-#shopt -s histappend # do not overwrite history
-#shopt -s expand_aliases # expand aliases
-
-#youtube-dl
-alias yta-aac="youtube-dl --extract-audio --audio-format aac "
-alias yta-best="youtube-dl --extract-audio --audio-format best "
-alias yta-flac="youtube-dl --extract-audio --audio-format flac "
-alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
-alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
-alias yta-opus="youtube-dl --extract-audio --audio-format opus "
-alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
-alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
@@ -284,10 +263,6 @@ alias nconfgrub="sudo nano /boot/grub/grub.cfg"
 alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 #receive the key of a developer
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
-
-#shutdown or reboot
-alias ssn="sudo shutdown now"
-alias sr="sudo reboot"
 
 #maintenance
 alias big="expac -H M '%m\t%n' | sort -h | nl"
@@ -326,8 +301,42 @@ alias fcommit="git log --oneline | fzf --preview 'git show --name-only {1}' --he
 alias fmd="~/Scripts/fzf_md.sh"
 alias fpdf="~/Scripts/fzf_pdf.sh"
 
+## Taskwarrior
+alias t="task"
+alias in="task add +in"
+alias ta="task add"
+alias td="task del"
+alias tc="task context"
+
+tickle () {
+    deadline=$1
+    shift
+    in +tickle wait:$deadline $@
+}
+alias tick=tickle
+alias think="tickle +1d"
+
+wishlist () {
+  taskID=$1 
+  shift 
+  task $taskID modify -in +wishlist
+}
+alias wl=wishlist
+
+delegate() {
+  taskID=$1 
+  due=$2 
+  timeToWait=$3 
+  annotation=$4
+  shift 
+  task $taskID modify -in +waiting due:+$due wait:+$timeToWait && task $taskID annotate "$annotation"
+}
+
+alias trin="task in"
+alias trwl="task wishlist"
+alias trn="task next"
+
 ## Other commands
-alias t="tmux"
 alias tssh="tmux-cssh"
 alias cat="bat"
 alias sz="source ~/.zshrc"
