@@ -302,11 +302,15 @@ alias fmd="~/Scripts/fzf_md.sh"
 alias fpdf="~/Scripts/fzf_pdf.sh"
 
 ## Taskwarrior
+alias tw="taskwarrior-tui"
 alias t="task"
 alias in="task add +in"
 alias ta="task add"
 alias td="task del"
+alias ts="task sync"
 alias tc="task context"
+alias tcn="task context none"
+alias tct="task context tasks"
 
 tickle () {
     deadline=$1

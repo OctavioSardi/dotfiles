@@ -4,6 +4,7 @@
 data.location=/home/octavio/.config/task/tasks
 
 nag=
+verbose=blank,header,label,project,sync,new-id,edit,override
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
@@ -27,6 +28,26 @@ nag=
 #include solarized-light-256.theme
 #include no-color.theme
 
+color.tagged=
+color.tag.next=
+color.sync.changed=
+color.sync.added=
+color.alternate=on gray3
+color.blocked=gray4 on blue
+color.blocking=bold gray1 on cyan
+color.active=bold gray1 on yellow
+color.uda.priority.L=
+color.uda.priority.M=
+color.uda.priority.H=
+color.sync.rejected=bold red on gray18
+color.overdue=bold red on gray0
+color.due.today=gray1 on magenta
+color.debug=color0
+color.footnote=white
+color.header=color15
+color.completed=gray22 on green
+color.calednar.weekend=gray1 on yellow
+
 # Urgency
 urgency.user.tag.next.coefficient=15.0
 
@@ -40,6 +61,9 @@ context.wishlist.read=+wishlist or +maybe
 context.work.read=+@computer or +@online or +@obsidian
 context.study.read=+@computer or +flashcards or +study or +@kindle and -fiction
 context.readlist.read=+book
+context.tasks.read=-wishlist and -BLOCKED
+context.inbox.read=+in
+context.inbox.write=+in
 context.buylist.read=+buy
 
 ## UDAs
@@ -80,7 +104,4 @@ taskd.key=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.key.pem
 taskd.ca=\/home\/octavio\/.wingtask_certs\/letsencrypt_root_cert.pem
 taskd.certificate=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.cert.pem
 taskd.credentials=WingTask\/octavio.sardi@proton.me\/6b6c6c34-6a2c-4c80-a3af-995f57258088
-context.tasks.read=-wishlist
-context.inbox.read=+in
-context.inbox.write=+in
-news.version=2.6.0
+context=tasks
