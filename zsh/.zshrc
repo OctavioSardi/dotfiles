@@ -285,6 +285,7 @@ alias vhl="nvim ~/.config/nvim/languages.toml"
 alias vpoly="nvim ~/.config/polybar/config.ini"
 alias vpolycolors="nvim ~/.config/polybar/colors.ini"
 alias vpolymodules="nvim ~/.config/polybar/modules.ini"
+alias logseq="cd /run/media/octavio/Logseq/pages/ && nvim"
 
 ## Pacman
 alias del="sudo pacman -R"
@@ -311,6 +312,9 @@ alias ts="task sync"
 alias tc="task context"
 alias tcn="task context none"
 alias tct="task context tasks"
+alias taa="task-attach-add"
+alias tan="task-attach-new"
+alias tao="task-attach-open"
 
 tickle () {
     deadline=$1
@@ -378,3 +382,7 @@ ex ()
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
 pokemon-colorscripts --random --no-title
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc

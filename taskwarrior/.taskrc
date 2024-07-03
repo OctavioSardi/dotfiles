@@ -1,7 +1,7 @@
 # TaskWarrior config by SardiOps
 
 # Files
-data.location=/home/octavio/.config/task/tasks
+# data.location=/run/media/octavio/OneDrive/.task
 
 nag=
 verbose=blank,header,label,project,sync,new-id,edit,override
@@ -104,4 +104,3 @@ taskd.key=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.key.pem
 taskd.ca=\/home\/octavio\/.wingtask_certs\/letsencrypt_root_cert.pem
 taskd.certificate=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.cert.pem
 taskd.credentials=WingTask\/octavio.sardi@proton.me\/6b6c6c34-6a2c-4c80-a3af-995f57258088
-context=tasks
