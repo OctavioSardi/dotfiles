@@ -2,14 +2,14 @@
 #	_________ ______            _______		     #
 #	\__   __// ___  \ |\     /|(       )	     #
 #		) (   \/   \  \| )   ( || () () |     	 #
-#		| |      ___) /| | _ | || || || |	 #
-#		| |     (___ ( | |( )| || |(_)| |	 #
-#		| |         ) \| || || || |   | |	 #
-#	___	) (___/\___/  /| () () || )   ( |	 #
-#	\_______/\______/ (_______)|/     \|	 #
-#											 #
-#			  Config by SardiOps			 #
-#											 #
+#		| |      ___) /| | _ | || || || |	       #
+#		| |     (___ ( | |( )| || |(_)| |	       #
+#		| |         ) \| || || || |   | |	       #
+#	___	) (___/\___/  /| () () || )   ( |	     #
+#	\_______/\______/ (_______)|/     \|	     #
+#											                       #
+#			  Config by SardiOps			             #
+#											                       #
 ##############################################
 
 # KEY DEFINITIONS TO REMEMBER
@@ -41,13 +41,14 @@ set $right l
 ####################################################################################################################
 
 # DUAL MONITOR CONFIG
+exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --primary --mode 1920x1080 --pos 1080x308 --rotate normal --output DP-4 --off --output DP-5 --off
 
 # First Monitor (Vertical)
-exec --no-startup-id xrandr --output DP-3 --primary
+# exec --no-startup-id xrandr --output DP-3 --primary
 set $firstMonitor DP-3
 
 # Second Monitor (Horizontal)
-exec --no-startup-id xrandr --output HDMI-0 --left-of DP-3 --rotate left
+# exec --no-startup-id xrandr --output HDMI-0 --left-of DP-3 --rotate left
 set $secondMonitor HDMI-0
 
 # Workspaces for Monitor 1
@@ -130,7 +131,7 @@ bindsym $mod+shift+Ctrl+r exec --no-startup-id bash ~/Scripts/i3-startup.sh
 #################
 
 # Rofi AppLauncher
-bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/text/launcher.sh
+# bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/text/launcher.sh
 
 # Rofi Window Selector
 bindsym $mod+mod1+1 exec --no-startup-id rofi -show window
@@ -155,7 +156,7 @@ bindsym $mod+mod1+6 exec rofi -modi games -show games -theme games-default
 #################
 
 # Brave
-bindsym $mod+w exec --no-startup-id brave
+bindsym $mod+w exec --no-startup-id firefox
 
 # VS Code
 bindsym $mod+mod1+c exec --no-startup-id code
@@ -427,11 +428,14 @@ exec_always --no-startup-id autotiling
 # Nitrogen
 exec --no-startup-id nitrogen --restore
 
+# OpenRGB
+exec --no-startup-id openrgb --server --startminimized
+
 # Morgen
 exec --no-startup-id morgen
 
-# Todoist
-exec --no-startup-id flatpak run com.todoist.Todoist
+# Vit
+exec --no-startup-id kitty -T=Vit -e vit 
 
 # ZapZap
 exec --no-startup-id flatpak run com.rtosta.zapzap
@@ -441,6 +445,9 @@ exec --no-startup-id ~/Applications/Pomotroid.AppImage --disable-gpu-sandbox
 
 # KeePassXC
 exec --no-startup-id keepassxc
+
+# OneDrive GUI
+exec --no-startup-id onedrivegui
 
 # Espanso
 exec --no-startup-id espanso stop && espanso start
@@ -466,11 +473,14 @@ exec --no-startup-id kitty -T=Ranger -e ranger /run/media/octavio
 # Htop
 exec --no-startup-id kitty -T=Htop -e htop
 
-# Dropbox
-exec --no-startup-id dropbox
-
 # GreenWithEnvy
 exec --no-startup-id gwe --hide-window
+
+# Ulauncher
+exec --no-startup-id ulauncher
+
+# Mullvad Daemon and Client
+exec --no-startup-id mullvad-daemon && mullvad-vpn
 
 ##########################
 # Other Startup Routines #
@@ -544,12 +554,16 @@ for_window [ title="Morgen" ] floating enable, resize set 1200 700, move positio
 bindsym $mod+m exec --no-startup-id i3-msg [ title="Morgen" ] scratchpad show &
 
 # Todoist (Tasks)
-for_window [ title="Todoist" ] floating enable, resize set 1200 700, move position center, move scratchpad
-bindsym $mod+t exec --no-startup-id i3-msg [ title="Todoist" ] scratchpad show &
+for_window [ title="Vit" ] floating enable, resize set 1200 700, move position center, move scratchpad
+bindsym $mod+t exec --no-startup-id i3-msg [ title="Vit" ] scratchpad show &
 
-# KeepassXD (Password Manager)
-for_window [instance="keepassxc"] floating enable, resize set 1200 700, move scratchpad
-bindsym $mod+p [instance="keepassxc"] scratchpad show, move position center
+# OneDrive Client
+for_window [instance="onedrivegui"] floating enable, resize set 400 700, move scratchpad
+bindsym $mod+o [instance="onedriveguic"] scratchpad show, move position center
+
+# Mullvad VPN Client
+for_window [instance ="Mullvad VPN"] floating enable, resize set 400 700, move scratchpad
+bindsym $mod+v [title="Mullvad VPN"] scratchpad show, move position center
 
 # Hide Scratchpad
 bindsym $mod+s move scratchpad
