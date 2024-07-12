@@ -1,7 +1,7 @@
 # TaskWarrior config by SardiOps
 
 # Files
-# data.location=/run/media/octavio/OneDrive/.task
+data.location=~/tasks
 
 nag=
 verbose=blank,header,label,project,sync,new-id,edit,override
@@ -94,13 +94,6 @@ report.wishlist.labels            = ID,Description
 ## Custom Next Report
 report.next.description     = Next Actions
 report.next.columns         = id,start.age,entry.age,urgency,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,estimate,brainpower,description
-report.next.filter          = status:pending
+report.next.filter          = status:pending limit:page (-BLOCKED)
 report.next.labels          = ID,Active,Age,Urgency,Deps,P,Project,Tag,Recur,S,Due,Until,Estimated Time,Brainpower,Description
 report.next.sort            = urgency-,brainpower-,priority-,estimate-
-
-## WingTask Server
-taskd.server=app.wingtask.com:53589
-taskd.key=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.key.pem
-taskd.ca=\/home\/octavio\/.wingtask_certs\/letsencrypt_root_cert.pem
-taskd.certificate=\/home\/octavio\/.wingtask_certs\/octavio.sardi@proton.me.cert.pem
-taskd.credentials=WingTask\/octavio.sardi@proton.me\/6b6c6c34-6a2c-4c80-a3af-995f57258088

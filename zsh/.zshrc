@@ -344,6 +344,12 @@ alias trin="task in"
 alias trwl="task wishlist"
 alias trn="task next"
 
+## Taskhelper
+alias th='~/go/bin/bin/taskhelper'
+
+## TaskLite
+alias tl="~/.local/bin/tasklite"
+
 ## Other commands
 alias tssh="tmux-cssh"
 alias cat="bat"

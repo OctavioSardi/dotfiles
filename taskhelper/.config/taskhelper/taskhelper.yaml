@@ -1,0 +1,6 @@
+test:
+  add:
+    - +test
+    - +template
+    - project:"test.Taskwarrior"
+    - due:tomorrow
