@@ -97,3 +97,10 @@ report.next.columns         = id,start.age,entry.age,urgency,depends,priority,pr
 report.next.filter          = status:pending limit:page (-BLOCKED)
 report.next.labels          = ID,Active,Age,Urgency,Deps,P,Project,Tag,Recur,S,Due,Until,Estimated Time,Brainpower,Description
 report.next.sort            = urgency-,brainpower-,priority-,estimate-
+
+## Custom Waiting Report
+report.waiting.description     = Waiting Actions
+report.waiting.columns         = id,urgency,depends,priority,project,tags,estimate,description
+report.waiting.filter          = status:waiting
+report.waiting.labels          = ID,Urgency,Deps,P,Project,Tag,Estimated Time,Description
+report.waiting.sort            = urgency-,priority-,estimate-
