@@ -4,4 +4,4 @@ configuration {
   show-icons:         true;
   icon-theme:         "Papirus";
 }
-@theme "/usr/share/rofi/themes/gruvbox-riovhen.rasi"
+@theme "/home/octavio/.config/rofi/gruvbox-riovhen.rasi"

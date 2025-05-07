@@ -107,11 +107,15 @@ else
   export EDITOR='nvim'
 fi
 
+export EDITOR='nvim'
+
 # Other Environment Variables
 
 ## Golang LSP
 export PATH="$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go/bin"
+
+export YAZI_CONFIG_HOME="$HOME/.config/yazi/"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -355,6 +359,9 @@ alias tssh="tmux-cssh"
 alias cat="bat"
 alias sz="source ~/.zshrc"
 alias hx="helix"
+alias scan="~/Scripts/pf-scan.sh"
+alias neofetch="neofetch --ascii_distro Arch_small"
+alias y="yazi"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
@@ -392,3 +399,14 @@ pokemon-colorscripts --random --no-title
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
+# bun completions
+[ -s "/home/octavio/.bun/_bun" ] && source "/home/octavio/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -2,6 +2,7 @@
 
 # Files
 data.location=~/tasks
+data.location=/home/octavio/Dropbox/tasks
 
 nag=
 verbose=blank,header,label,project,sync,new-id,edit,override
@@ -78,6 +79,13 @@ uda.brainpower.label=brain
 uda.estimate.type=numeric
 uda.estimate.label=Estimate
 uda.estimate.label=est
+
+### Trello sync
+# UDAs
+uda.trelloid.type=string
+uda.trelloid.label=Trello ID
+uda.trellolistname.type=string
+uda.trellolistname.label=Trello List Name
 
 ## Custom Inbox Report
 report.in.columns           = id,description

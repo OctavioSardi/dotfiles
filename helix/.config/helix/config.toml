@@ -8,7 +8,7 @@ color-modes = true
 cursorline = true
 true-color = true
 scrolloff = 10
-bufferline = "multiple"
+bufferline = "always"
 
 
 [editor.cursor-shape]
@@ -77,3 +77,21 @@ C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_befor
 space."." = "file_picker_in_current_buffer_directory"
 ";" = ["keep_primary_selection"]
 "," = ["collapse_selection"]
+C-d = [":buffer-close"]
+C-g = [":write-all",":insert-output lazygit >/dev/tty",":redraw",":reload-all"]
+space.e = [
+  ":sh rm -f /tmp/unique-file-h21a434",
+  ":insert-output yazi '%{buffer_name}' --chooser-file=/tmp/unique-file-h21a434",
+  ":insert-output echo \"x1b[?1049h\" > /dev/tty",
+  ":open %sh{cat /tmp/unique-file-h21a434}",
+  ":redraw",
+]
+space.E = [
+  ":sh rm -f /tmp/unique-file-u41ae14",
+  ":insert-output yazi '%{workspace_directory}' --chooser-file=/tmp/unique-file-u41ae14",
+  ":insert-output echo \"x1b[?1049h\" > /dev/tty",
+  ":open %sh{cat /tmp/unique-file-u41ae14}",
+  ":redraw",
+  ":set mouse false",
+  ":set mouse true",
+]

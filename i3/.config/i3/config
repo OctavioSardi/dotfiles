@@ -41,7 +41,7 @@ set $right l
 ####################################################################################################################
 
 # DUAL MONITOR CONFIG
-exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --primary --mode 1920x1080 --pos 1080x308 --rotate normal --output DP-4 --off --output DP-5 --off
+exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --primary --mode 1920x1080 --pos 1080x253 --rotate normal --output DP-4 --off --output DP-5 --off
 
 # First Monitor (Vertical)
 # exec --no-startup-id xrandr --output DP-3 --primary
@@ -130,9 +130,6 @@ bindsym $mod+shift+Ctrl+r exec --no-startup-id bash ~/Scripts/i3-startup.sh
 # Rofi Bindings #
 #################
 
-# Rofi AppLauncher
-# bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/text/launcher.sh
-
 # Rofi Window Selector
 bindsym $mod+mod1+1 exec --no-startup-id rofi -show window
 
@@ -142,21 +139,18 @@ bindsym $mod+mod1+2 exec --no-startup-id rofi -show calc -modi calc -no-show-mat
 # Rofi Clipboard
 bindsym $mod+mod1+3 exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 
-# Rofi Scripts Launcher
-bindsym $mod+mod1+4 exec bash ~/Programs/Rofi/rofi-sh-launcher.sh
-
 # Rofi-Bluetooth
-bindsym $mod+mod1+5 exec --no-startup-id rofi-bluetooth
-
-# Rofi-games
-bindsym $mod+mod1+6 exec rofi -modi games -show games -theme games-default
+bindsym $mod+mod1+4 exec --no-startup-id rofi-bluetooth
 
 #################
 # Main Programs #
 #################
 
-# Brave
-bindsym $mod+w exec --no-startup-id firefox
+# Firefox
+bindsym $mod+w exec --no-startup-id flatpak run app.zen_browser.zen
+
+# Anki
+bindsym $mod+mod1+a exec --no-startup-id flatpak run net.ankiweb.Anki
 
 # VS Code
 bindsym $mod+mod1+c exec --no-startup-id code
@@ -172,6 +166,9 @@ bindsym $mod+mod1+d exec --no-startup-id webcord
 
 # Steam
 bindsym $mod+mod1+s exec --no-startup-id steam
+
+# xProp
+bindsym $mod+mod1+x exec --no-startup-id xprop _NET_WM_WINDOW_TYPE
 
 # Flameshot
 bindsym $mod+mod1+p exec --no-startup-id flameshot gui
@@ -303,13 +300,13 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
 # Border Control
 new_window normal
-new_float normal
+new_float pixel 0
 
 # Popups during fullscreen mode
 popup_during_fullscreen smart
 
 # i3-gaps
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 4
 gaps inner 8
 gaps outer 0
 hide_edge_borders smart
@@ -353,7 +350,7 @@ mode "$mode_gaps_outer" {
 }
 
 # Compositor (for fade effect)
-exec_always --no-startup-id picom -b -f
+exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
 # Toggle Picom
 bindsym $mod+Shift+Crtl+r exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
@@ -361,7 +358,7 @@ bindsym $mod+Shift+Crtl+r exec --no-startup-id ~/.config/i3/scripts/picom-toggle
 # Theming
 # Window color settings
 # class                 border    backgr.   text      indicator
-client.focused          #d6b785   #d6b785   #d6b785   #eea93e
+client.focused          #90851a   #90851a   #90851a   #90851a
 client.unfocused        #222222   #222222   #222222   #222222
 client.focused_inactive #222222   #222222   #222222   #222222
 client.placeholder      #222222   #222222   #222222   #222222
@@ -400,7 +397,6 @@ assign [class="Foliate"]															 → 8
 assign [class="*- Obsidian .*"]													    → 9
 
 # Workspace 13																		 
-# assign [class="KeePassXC"]															→ 13
 
 # Workspace 14
 assign [class="Anki|anki"]															→ 14
@@ -431,29 +427,17 @@ exec --no-startup-id nitrogen --restore
 # OpenRGB
 exec --no-startup-id openrgb --server --startminimized
 
-# Morgen
-exec --no-startup-id morgen
-
-# Vit
-exec --no-startup-id kitty -T=Vit -e vit 
-
 # ZapZap
 exec --no-startup-id flatpak run com.rtosta.zapzap
 
 # Pomotroid
 exec --no-startup-id ~/Applications/Pomotroid.AppImage --disable-gpu-sandbox
 
-# KeePassXC
-exec --no-startup-id keepassxc
-
-# OneDrive GUI
-exec --no-startup-id onedrivegui
+# Dropbox
+exec --no-startup-id dropbox
 
 # Espanso
 exec --no-startup-id espanso stop && espanso start
-
-# Autodoist
-exec --no-startup-id python ~/Programs/autodoist/autodoist.py -a 702e2a98cc739b720a17ba3a5b9a31d7d0c71c6a -l next_action
 
 # Syncthing
 exec --no-startup-id systemctl --user start syncthing.service
@@ -467,20 +451,26 @@ exec_always --no-startup-id greenclip daemon
 # i3 Restore
 exec --no-startup-id bash ~/Scripts/i3-startup.sh
 
-# Ranger
-exec --no-startup-id kitty -T=Ranger -e ranger /run/media/octavio
+# Yazi
+exec --no-startup-id kitty -T=Yazi -e yazi /run/media/octavio
 
 # Htop
 exec --no-startup-id kitty -T=Htop -e htop
+
+# Flotaing Terminal
+exec --no-startup-id kitty -T=Floaterm
 
 # GreenWithEnvy
 exec --no-startup-id gwe --hide-window
 
 # Ulauncher
-exec --no-startup-id ulauncher
+exec --no-startup-id ulauncher &
 
 # Mullvad Daemon and Client
 exec --no-startup-id mullvad-daemon && mullvad-vpn
+
+# Amplenote
+exec --no-startup-id /home/octavio/Applications/Amplenote-Desktop-linux-x64/Amplenote-Desktop
 
 ##########################
 # Other Startup Routines #
@@ -500,6 +490,7 @@ exec --no-startup-id kill xfce4-notifyd && dunst &
 
 for_window [class="Bleachbit"] floating disable
 for_window [class="Blueberry.py"] floating enable
+for_window [class="Trayer"] floating enable
 for_window [class="flameshot"] floating enable 
 for_window [class="Gnome-disks"] floating disable
 for_window [class="^Gnome-font-viewer$"] floating enable
@@ -533,13 +524,17 @@ for_window [window_role="setup"] floating enable
 
 # SCRATCHPADS
 
-# Ranger FM
-for_window [ title="Ranger" ] floating enable, resize set 1200 700,  move position center, move scratchpad
-bindsym $mod+r exec --no-startup-id i3-msg [ title="Ranger" ] scratchpad show &
+# Yazi FM
+for_window [ title="Yazi" ] floating enable, resize set 1200 700,  move position center, move scratchpad
+bindsym $mod+e exec --no-startup-id i3-msg [ title="Yazi" ] scratchpad show &
 
 # Htop (Process Management)
 for_window [ title="Htop" ] floating enable, resize set 1200 700,  move position center, move scratchpad
 bindsym $mod+a exec --no-startup-id i3-msg [ title="Htop" ] scratchpad show &
+
+# Floating Terminal
+for_window [ title="Floaterm" ] floating enable, resize set 1200 700,  move position center, move scratchpad
+bindsym $mod+BackSpace exec --no-startup-id i3-msg [ title="Floaterm" ] scratchpad show &
 
 # Pomotroid
 for_window [ title="Pomotroid" ] floating enable, move position center, move scratchpad
@@ -549,17 +544,9 @@ bindsym $mod+c exec --no-startup-id i3-msg [ title="Pomotroid" ] scratchpad show
 for_window [ title="ZapZap" ] floating enable, resize set 1200 700,  move position center, move scratchpad
 bindsym $mod+z exec --no-startup-id i3-msg [ title="ZapZap" ] scratchpad show &
 
-# Morgen (Calendar)
-for_window [ title="Morgen" ] floating enable, resize set 1200 700, move position center, move scratchpad
-bindsym $mod+m exec --no-startup-id i3-msg [ title="Morgen" ] scratchpad show &
-
-# Todoist (Tasks)
-for_window [ title="Vit" ] floating enable, resize set 1200 700, move position center, move scratchpad
-bindsym $mod+t exec --no-startup-id i3-msg [ title="Vit" ] scratchpad show &
-
-# OneDrive Client
-for_window [instance="onedrivegui"] floating enable, resize set 400 700, move scratchpad
-bindsym $mod+o [instance="onedriveguic"] scratchpad show, move position center
+# Amplenote (Task Manager)
+for_window [ title="Amplenote" ] floating enable, resize set 1200 700,  move position center, move scratchpad
+bindsym $mod+t exec --no-startup-id i3-msg [ title="Amplenote" ] scratchpad show &
 
 # Mullvad VPN Client
 for_window [instance ="Mullvad VPN"] floating enable, resize set 400 700, move scratchpad
